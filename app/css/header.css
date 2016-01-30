@@ -1,0 +1,46 @@
+body h1 {
+  margin: 0;
+}
+body .a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ff0000), to(#008000));
+  background: -webkit-linear-gradient(#ff0000, #008000);
+  background: linear-gradient(#ff0000, #008000);
+}
+
+.header {
+  background: -webkit-gradient(linear, left top, left bottom, from(#ff0000), to(#008000));
+  background: -webkit-linear-gradient(#ff0000, #008000);
+  background: linear-gradient(#ff0000, #008000);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.header .topline {
+  padding: 0;
+  background: blue;
+  padding: 20px 0;
+}
+.header .topline .logo {
+  background: #ccc;
+}
+.header .topline .main-mnu {
+  background: red;
+}
+.header .topline .contact {
+  background: lime;
+}
+.header .header-cont {
+  background: #898111;
+  padding: 20px 0;
+}
+.header .header-cont .left-head-cont {
+  background: red;
+  height: 500px;
+}
+.header .header-cont .right-head-cont {
+  background: lime;
+  height: 500px;
+}

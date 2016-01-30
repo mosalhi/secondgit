@@ -1,0 +1,10 @@
+/sass
+/.sass-cache
+config.rb
+package.json
+.sublime-gulp.cache
+gulpfile.js
+/app/images
+sftp-config.json
+/node_modules
+.htaccess
