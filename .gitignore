@@ -10,6 +10,7 @@ sftp-config.json
 /node_modules
 .htaccess
 app/bower
+app/libs
 # Compiled source #
 ###################
 *.com
