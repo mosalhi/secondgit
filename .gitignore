@@ -9,6 +9,7 @@ sftp-config.json
 .gitignore
 /node_modules
 .htaccess
+app/bower
 # Compiled source #
 ###################
 *.com

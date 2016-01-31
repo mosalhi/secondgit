@@ -1,0 +1,6 @@
+{
+  "name": "secondgit",
+  "dependencies": {
+    "jquery": "^2.2.0"
+  }
+}
