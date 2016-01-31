@@ -11,6 +11,7 @@ body .a {
   background: -webkit-gradient(linear, left top, left bottom, from(#ff0000), to(#008000));
   background: -webkit-linear-gradient(#ff0000, #008000);
   background: linear-gradient(#ff0000, #008000);
+  color: green;
 }
 
 .header {
