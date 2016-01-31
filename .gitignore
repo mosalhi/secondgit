@@ -1,6 +1,5 @@
 /sass
 /.sass-cache
-config.rb
 .sublime-gulp.cache
 /app/images
 sftp-config.json
