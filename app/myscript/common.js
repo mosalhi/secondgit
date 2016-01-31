@@ -5,7 +5,7 @@ $(function() {
 		$("img[src*='svg']").attr("src", function() {
 			return $(this).attr("src").replace(".svg", ".png");
 		});
-	}
+	} 
 
 	//E-mail Ajax Send
 	//Documentation & Example: https://github.com/agragregra/uniMail
@@ -24,7 +24,6 @@ $(function() {
 		});
 		return false;
 	});
-
 	//Chrome Smooth Scroll
 	try {
 		$.browserSelector();

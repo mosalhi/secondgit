@@ -14,6 +14,7 @@ body .a {
   color: green;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .header {
