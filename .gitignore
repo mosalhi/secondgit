@@ -1,16 +1,17 @@
 /sass
 /.sass-cache
 config.rb
-package.json
 .sublime-gulp.cache
-gulpfile.js
 /app/images
 sftp-config.json
-.gitignore
 /node_modules
 .htaccess
 app/bower
 app/libs
+
+
+
+
 # Compiled source #
 ###################
 *.com
