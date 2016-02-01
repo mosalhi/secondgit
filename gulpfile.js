@@ -68,7 +68,7 @@ gulp.task('sass', function() {
 //****************************************************************************
  // Lint Task
 gulp.task('lint', function() {
-    return gulp.src('app/myscript/*.js')
+    return gulp.src('app/myscript/common.js')
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
@@ -95,9 +95,13 @@ gulp.task('uglify', function() {
 //Concatenate & Minify JS
 
 gulp.task('scripts', function() {
-    return gulp.src(['app/libs/**/*.js', 'app/bower_components/**/*.js'])
+    return gulp.src(['app/libs/**/*.min.js',])
         .pipe(concat('all.js'))
-        .pipe(gulp.dest('app/myscript'));
+        .pipe(rename({
+        suffix: '.min', 
+        prefix : '_'
+    }))
+        .pipe(gulp.dest('app/js'));
 });
 //****************************************************************************
  
@@ -117,7 +121,7 @@ gulp.task('images', function() {
 //watch
 gulp.task('watch', function() {
     gulp.watch('sass/*.scss', ['sass']);
-    gulp.watch('app/myscript/*.js', ['lint']);
+    gulp.watch('app/myscript/*.js', ['lint', 'uglify']);
     gulp.watch('app/*.css', notifyLiveReload);
     gulp.watch('app/css/*.css', notifyLiveReload);
     gulp.watch('app/*.html', notifyLiveReload);
@@ -125,7 +129,7 @@ gulp.task('watch', function() {
 });
  
 
-gulp.task('default', ['lint', 'express', 'livereload','sass', 'watch'], function() {
+gulp.task('default', ['lint', 'express', 'livereload','sass', 'watch', 'uglify'], function() {
 
 });
 //****************************************************************************
