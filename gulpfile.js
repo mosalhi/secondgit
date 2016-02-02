@@ -90,20 +90,26 @@ gulp.task('uglify', function() {
     }))
     .pipe(gulp.dest('app/js'));
 });
-
+ 
 //****************************************************************************
 //Concatenate & Minify JS
 
 gulp.task('scripts', function() {
-    return gulp.src(['app/libs/**/*.min.js',])
-        .pipe(concat('all.js'))
+    return gulp.src([
+        'app/libs/jquery/jquery-1.11.2.min.js',
+        'app/libs/html5shiv/html5shiv.min.js',
+        'app/libs/modernizr/modernizr.js',
+        'app/libs/plugins-scroll/plugins-scroll.js',
+        'app/libs/respond/respond.min.js',
+        'app/libs/waypoints/waypoints.min.js'
+        ])
+        .pipe(concat('alls.js'))
         .pipe(rename({
         suffix: '.min', 
         prefix : '_'
     }))
         .pipe(gulp.dest('app/js'));
 });
-//****************************************************************************
  
 //****************************************************************************
 // Images
