@@ -65,6 +65,7 @@
 *::-webkit-input-placeholder {
   color: #666;
   opacity: 1;
+  padding: 10px;
 }
 
 *:-moz-placeholder {
