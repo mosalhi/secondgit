@@ -13,8 +13,8 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
-    concat = require('gulp-concat');
-
+    concat = require('gulp-concat'),
+    connect = require('gulp-connect');
 
 //****************************************************************************
 //gulp
@@ -34,7 +34,6 @@ gulp.task('livereload', function() {
     tinylr = require('tiny-lr')();
     tinylr.listen(35729);
 });
-
 function notifyLiveReload(event) {
     var fileName = require('path').relative(__dirname, event.path);
     tinylr.changed({
@@ -45,6 +44,7 @@ function notifyLiveReload(event) {
 }
 
 //****************************************************************************
+//sass
 gulp.task('sass', function() {
     return gulp.src('sass/*.scss')
     .pipe(compass({
@@ -66,6 +66,20 @@ gulp.task('sass', function() {
 });
 
 //****************************************************************************
+//html
+gulp.task('html', function () {
+  gulp.src('./app/*.html')
+    .pipe(connect.reload());
+});
+
+//****************************************************************************
+//js 
+gulp.task('js', function () {
+  gulp.src('./app/*.js')
+    .pipe(connect.reload());
+});
+
+//****************************************************************************
  // Lint Task
 gulp.task('lint', function() {
     return gulp.src('app/myscript/common.js')
@@ -75,7 +89,6 @@ gulp.task('lint', function() {
 
 //****************************************************************************
 // Uglify
- 
 gulp.task('uglify', function() {
   return gulp.src('app/myscript/*.js')
     .pipe(uglify('app.js', {
@@ -91,9 +104,10 @@ gulp.task('uglify', function() {
     .pipe(gulp.dest('app/js'));
 });
  
-//****************************************************************************
+//============================================================================
+//============================Отдельно выпольняется===========================
+//============================================================================
 //Concatenate & Minify JS
-
 gulp.task('scripts', function() {
     return gulp.src([
         'app/libs/jquery/jquery-1.11.2.min.js',
@@ -113,7 +127,6 @@ gulp.task('scripts', function() {
  
 //****************************************************************************
 // Images
-
 gulp.task('images', function() {
   return gulp.src('app/img/**/*')
     .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
@@ -122,12 +135,13 @@ gulp.task('images', function() {
     .pipe(notify({ message: 'Images task complete' }));
 });
 
-//****************************************************************************
-
+//===========================================================================
+//===========================================================================
 //watch
 gulp.task('watch', function() {
     gulp.watch('sass/*.scss', ['sass']);
-    gulp.watch('app/myscript/*.js', ['lint', 'uglify']);
+    gulp.watch(['./app/*.html'], ['html']);
+    gulp.watch('app/myscript/*.js', ['lint', 'uglify','js']);
     gulp.watch('app/*.css', notifyLiveReload);
     gulp.watch('app/css/*.css', notifyLiveReload);
     gulp.watch('app/*.html', notifyLiveReload);
@@ -135,7 +149,7 @@ gulp.task('watch', function() {
 });
  
 
-gulp.task('default', ['lint', 'express', 'livereload','sass', 'watch', 'uglify'], function() {
+gulp.task('default', ['lint', 'express', 'livereload','sass','js', 'watch', 'uglify','html'], function() {
 
 });
 //****************************************************************************
