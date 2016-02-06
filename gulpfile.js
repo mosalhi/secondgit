@@ -105,12 +105,14 @@ gulp.task('uglify', function() {
     .pipe(gulp.dest('app/min-js'));
 });
 //===========================================================================
+//main-files
     gulp.task('main_js', function() {
     return gulp.src(mainBowerFiles('**/*.js'))
-    
+
         .pipe(gulp.dest('app/js'));
 });
 //===========================================================================
+//main-files
     gulp.task('main_css', function() {
     return gulp.src(mainBowerFiles('**/*.css'))
     
