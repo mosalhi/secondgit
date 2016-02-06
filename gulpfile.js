@@ -103,6 +103,59 @@ gulp.task('uglify', function() {
     }))
     .pipe(gulp.dest('app/js'));
 });
+
+//===========================================================================
+//watch
+gulp.task('watch', function() {
+    gulp.watch('sass/*.scss', ['sass']);
+    gulp.watch(['./app/*.html'], ['html']);
+    gulp.watch('app/myscript/*.js', ['lint', 'uglify','js']);
+    gulp.watch('app/*.css', notifyLiveReload);
+    gulp.watch('app/css/*.css', notifyLiveReload);
+    gulp.watch('app/*.html', notifyLiveReload);
+    gulp.watch('app/myscript/*.js', notifyLiveReload);
+});
+ 
+
+gulp.task('default', ['lint', 'express', 'livereload','sass','js', 'watch', 'uglify','html'], function() {
+
+});
+//****************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 //============================================================================
 //============================Отдельно выпольняется===========================
@@ -136,20 +189,3 @@ gulp.task('images', function() {
 });
 
 //===========================================================================
-//===========================================================================
-//watch
-gulp.task('watch', function() {
-    gulp.watch('sass/*.scss', ['sass']);
-    gulp.watch(['./app/*.html'], ['html']);
-    gulp.watch('app/myscript/*.js', ['lint', 'uglify','js']);
-    gulp.watch('app/*.css', notifyLiveReload);
-    gulp.watch('app/css/*.css', notifyLiveReload);
-    gulp.watch('app/*.html', notifyLiveReload);
-    gulp.watch('app/myscript/*.js', notifyLiveReload);
-});
- 
-
-gulp.task('default', ['lint', 'express', 'livereload','sass','js', 'watch', 'uglify','html'], function() {
-
-});
-//****************************************************************************
