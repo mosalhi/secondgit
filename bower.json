@@ -1,4 +1,9 @@
 {
   "name": "secondgit",
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "bootstrap": "^3.3.6",
+    "animate.css": "^3.5.1",
+    "waypoints": "^4.0.0"
+  }
 }
