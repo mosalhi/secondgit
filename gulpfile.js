@@ -14,6 +14,7 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     concat = require('gulp-concat'),
+    mainBowerFiles = require('main-bower-files'),
     connect = require('gulp-connect');
 
 //****************************************************************************
@@ -90,7 +91,7 @@ gulp.task('lint', function() {
 //****************************************************************************
 // Uglify
 gulp.task('uglify', function() {
-  return gulp.src('app/myscript/*.js')
+  return gulp.src('app/js/*.js')
     .pipe(uglify('app.js', {
       mangle: false,
       output: {
@@ -101,9 +102,20 @@ gulp.task('uglify', function() {
         suffix: '.min', 
         prefix : '_'
     }))
-    .pipe(gulp.dest('app/js'));
+    .pipe(gulp.dest('app/min-js'));
 });
-
+//===========================================================================
+    gulp.task('main_js', function() {
+    return gulp.src(mainBowerFiles('**/*.js'))
+    
+        .pipe(gulp.dest('app/js'));
+});
+//===========================================================================
+    gulp.task('main_css', function() {
+    return gulp.src(mainBowerFiles('**/*.css'))
+    
+        .pipe(gulp.dest('app/css'));
+});
 //===========================================================================
 //watch
 gulp.task('watch', function() {
@@ -117,7 +129,7 @@ gulp.task('watch', function() {
 });
  
 
-gulp.task('default', ['lint', 'express', 'livereload','sass','js', 'watch', 'uglify','html'], function() {
+gulp.task('default', ['lint','express', 'livereload','sass','js', 'watch', 'uglify','html'], function() {
 
 });
 //****************************************************************************

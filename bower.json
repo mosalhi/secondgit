@@ -1,9 +1,31 @@
 {
   "name": "secondgit",
   "dependencies": {
-    "jquery": "^2.2.0",
     "bootstrap": "^3.3.6",
-    "animate.css": "^3.5.1",
     "waypoints": "^4.0.0"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "./dist/js/bootstrap.js",
+        "./dist/css/bootstrap.css"
+      ]
+    }
+  },
+  "preen": {
+    "jquery": [
+      "dist/*.js"
+    ],
+    "bootstrap": [
+      "dist/css/*.css",
+      "dist/js/*.js"
+    ],
+    "animate.css": [
+      "animate.css",
+      "animate.min.css"
+    ],
+    "waypoints": [
+      "lib/*.js"
+    ]
   }
 }
